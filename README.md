@@ -44,20 +44,20 @@ It has to be a valid JSON file, so don't forget the , at the end of the lines
 }
 ```
 
- #TUNNEL        is the name of your ipsec tunnel,
-                it has to match the name used in your ipsec config
+   #TUNNEL        is the name of your ipsec tunnel,
+                  it has to match the name used in your ipsec config
 
- #TARGETIP      Use this IP as ping target to check if the tunnel is running
-                and for monitoring the RTT
+   #TARGETIP      Use this IP as ping target to check if the tunnel is running
+                  and for monitoring the RTT
 
- #SOURCEIP      Use this IP as ping source IP to check if the tunnel is running
-                and for monitoring the RTT
-                Since VPN gateways ususally have multiple interfaces and
-                IP addresses assigned, you have to define the source IP
+   #SOURCEIP      Use this IP as ping source IP to check if the tunnel is running
+                  and for monitoring the RTT
+                  Since VPN gateways ususally have multiple interfaces and
+                  IP addresses assigned, you have to define the source IP
 
- #RTT_TIME_WARN Trigger a warning if the round trip times between 
-                #SOURCEIP and #TARGETIP are higher than this value
+   #RTT_TIME_WARN Trigger a warning if the round trip times between 
+                  #SOURCEIP and #TARGETIP are higher than this value
 
- #RTT_TIME_WERR Trigger a error if the round trip times between 
-                #SOURCEIP and #TARGETIP are higher than this value
+   #RTT_TIME_WERR Trigger a error if the round trip times between 
+                  #SOURCEIP and #TARGETIP are higher than this value
 
