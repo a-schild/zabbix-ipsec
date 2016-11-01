@@ -3,8 +3,9 @@
 # Any Comments or Questions please e-mail to andre@schild.ws
 #
 # Plugin Name: check_ipsec
-# Version: 2.0
-# Date: 06/02/2015
+# Version: 2.1
+# Date: 2016/11/01 2.1 Added support for ikev1 tunnels with strongswan
+# Date: 2015/02/06 2.0 Added support for strongswan
 #
 #
 # ------------Defining Variables------------
@@ -151,6 +152,10 @@ test_tunnel() {
 	if [[ "$STRONG" -eq "1" ]]
 	then
 	    tunneltest=`$IPSECCMD status | grep -e "IPsec SA established" | grep -e "newest IPSEC" |grep -e $CONN | wc -l`
+	    if [[ "$tunneltest" -eq "0" ]]
+    	    then
+		tunneltest=`$IPSECCMD whack --status | grep -e "IPsec SA established" | grep -e "newest IPSEC" |grep -e "$CONN" | wc -l`
+	    fi
 	else
 	    tunneltest=`$IPSECCMD whack --status | grep -e "IPsec SA established" | grep -e "newest IPSEC" |grep -e "$CONN" | wc -l`
 	fi
