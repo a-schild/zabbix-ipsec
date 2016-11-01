@@ -151,7 +151,7 @@ test_tunnel() {
 	CONN="$1"
 	if [[ "$STRONG" -eq "1" ]]
 	then
-	    tunneltest=`$IPSECCMD status | grep -e "IPsec SA established" | grep -e "newest IPSEC" |grep -e $CONN | wc -l`
+	    tunneltest=`$IPSECCMD status $CONN | grep -e "ESTABLISHED" | wc -l`
 	    if [[ "$tunneltest" -eq "0" ]]
     	    then
 		tunneltest=`$IPSECCMD whack --status | grep -e "IPsec SA established" | grep -e "newest IPSEC" |grep -e "$CONN" | wc -l`
