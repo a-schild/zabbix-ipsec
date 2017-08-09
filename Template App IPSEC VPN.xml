@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.2</version>
-    <date>2017-08-09T07:42:30Z</date>
+    <date>2017-08-09T10:45:48Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -415,7 +415,7 @@
             <expression>{Template App IPSEC VPN:proc.num[pluto].last()}&lt;1 and {Template App IPSEC VPN:proc.num[charon].last()}&lt;1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>IPSEC Deamon not running on {HOST.NAME}</name>
+            <name>IPSEC daemon not running on {HOST.NAME}</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
