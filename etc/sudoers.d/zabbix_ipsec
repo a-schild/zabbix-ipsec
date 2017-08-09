@@ -1,2 +1,3 @@
 Defaults:zabbix !requiretty
+Defaults:zabbix !syslog
 zabbix ALL = (root) NOPASSWD: /usr/local/lib/zabbix/externalscripts/check_ipsec.sh
