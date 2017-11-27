@@ -3,7 +3,8 @@
 # Any Comments or Questions please e-mail to andre@schild.ws
 #
 # Plugin Name: check_ipsec
-# Version: 2.1
+# Version: 2.2
+# Date: 2017/11/27 2.2 Removed test for gateway.txt file
 # Date: 2016/11/01 2.1 Added support for ikev1 tunnels with strongswan
 # Date: 2015/02/06 2.0 Added support for strongswan
 #
@@ -34,7 +35,7 @@ fi
 # . $PROGPATH/utils.sh
 
 
-# Testing availability of $IPSECBIN, $FPINGBIN and $GATEWAYLIST
+# Testing availability of $IPSECBIN, $FPINGBIN 
 
 if [ $# -eq 0 ];
 then
@@ -59,13 +60,6 @@ then
 		echo CRITICAL - $FPINGBIN not exist
 		exit $STATE_CRITICAL
 	fi
-fi
-
-test -e $PROGPATH/$GATEWAYLIST
-if [ $? -ne 0 ];
-then
-   echo CRITICAL - $GATEWAYLIST not exist
-   exit $STATE_CRITICAL
 fi
 
 print_usage() {
