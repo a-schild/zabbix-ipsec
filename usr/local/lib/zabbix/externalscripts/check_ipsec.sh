@@ -140,8 +140,6 @@ ping_tunnel_rtt() {
         if [[ "$alive" -eq "1" ]]
         then
              rtt_ms= echo $rtt | cut -d "(" -f2 | cut -d ")" -f1 | cut -d " " -f1
-        else
-            #echo -1
         fi
 }
 
