@@ -131,12 +131,20 @@ ping_tunnel() {
 
 ping_tunnel_rtt() {
 
-	IP_DEST="$1"
-	IP_SRC="$2"
+        IP_DEST="$1"
+        IP_SRC="$2"
 
         rtt=`$FPINGBIN $IP_DEST -S$IP_SRC -r 1 -e`
-	rtt_ms= echo $rtt | cut -d "(" -f2 | cut -d ")" -f1 | cut -d " " -f1
+        alive=`echo $rtt | grep alive | wc -l`
+
+        if [[ "$alive" -eq "1" ]]
+        then
+             rtt_ms= echo $rtt | cut -d "(" -f2 | cut -d ")" -f1 | cut -d " " -f1
+        else
+            #echo -1
+        fi
 }
+
 
 
 
