@@ -1,3 +1,13 @@
+# sudo rights for the Zabbix agent (copy to /etc/sudoers.d/zabbix_ipsec, mode 0440).
+#
+# check_ipsec.sh runs as root, so it is pinned to the three forms the template uses:
+#   ipsec.tunnel[{#TUNNEL}]                     -> <tunnel name>
+#   ipsec.tunnel[{#TARGETIP},{#SOURCEIP}]       -> <target ip> <source ip>
+#   ipsec.tunnel[{#TARGETIP},{#SOURCEIP},rtt]   -> <target ip> <source ip> rtt
+# The ^...$ argument regex needs sudo >= 1.9.10 (e.g. Debian 12+, Ubuntu 22.10+; check with
+# "sudo -V"). On older sudo use the unrestricted rule at the end instead.
+# Logging stays on (no !syslog), so refused attempts leave a trace.
 Defaults:zabbix !requiretty
-Defaults:zabbix !syslog
-zabbix ALL = (root) NOPASSWD: /usr/local/lib/zabbix/externalscripts/check_ipsec.sh
+zabbix ALL=(root) NOPASSWD: /usr/local/lib/zabbix/externalscripts/check_ipsec.sh ^([A-Za-z0-9_.-]{1,64}|[0-9a-fA-F.\:]{2,39} [0-9a-fA-F.\:]{2,39}( rtt)?)$
+# sudo < 1.9.10 only:
+# zabbix ALL=(root) NOPASSWD: /usr/local/lib/zabbix/externalscripts/check_ipsec.sh
