@@ -26,6 +26,14 @@ In addition you will need a installed fping to monitor the "quality" of your vpn
     -> Make sure to have sudo installed on your IPSEC gateway.
        The Zabbix agent does not have the required privileges to monitor
        the ipsec status. With this sudo config we allow it.
+       The rule only allows the three argument forms the template uses
+       (tunnel name / target ip + source ip / target ip + source ip + rtt).
+       It needs sudo >= 1.9.10 for the argument regex; the file contains a
+       fallback rule for older versions. Install it with
+       `install -m 0440 etc/sudoers.d/zabbix_ipsec /etc/sudoers.d/` and
+       check it with `visudo -c`.
+       Changed 2026-10-22: the previous rule allowed the script with any
+       arguments and switched sudo logging off (`!syslog`).
 
 ###### "/usr/local/lib/zabbix/externalscripts/check_ipsec.sh"
     -> The script doing the actual ipsec tests.
